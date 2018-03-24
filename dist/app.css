@@ -1,3 +1,65 @@
+article,
+aside,
+figure,
+figcaption,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+body,
+div,
+dt,
+dl,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+input,
+form,
+a,
+p,
+textarea {
+  margin: 0;
+  padding: 0;
+  font-family: '\5FAE\8F6F\96C5\9ED1', consolas;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  display: block;
+}
+img {
+  border: none;
+  display: block;
+}
 h1 {
   color: red;
+}
+.main {
+  color: pink;
+}
+.step1 {
+  color: red;
+}
+.step2 {
+  color: green;
+}
+.step3 {
+  color: yellow;
+}
+.step4 {
+  color: grey;
 }

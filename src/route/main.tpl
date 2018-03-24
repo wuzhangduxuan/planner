@@ -1,0 +1,1 @@
+<p class="main">{{data.title}}</p>

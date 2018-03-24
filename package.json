@@ -33,6 +33,7 @@
     "json-loader": "^0.5.7",
     "less-loader": "^4.0.5",
     "style-loader": "^0.19.1",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^3.1.1"
   }
 }

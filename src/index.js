@@ -1,2 +1,13 @@
+const $ = require('jquery');
+const rem = require('./util/rem');
+const redirect = require('./controller/redirect');
+const render = require('./module/render');
 require('./index.less');
-console.log('hi');
+
+!(function () {
+
+  rem.init();
+  render.init();
+  // redirect.init();
+
+})();

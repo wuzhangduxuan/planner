@@ -1,0 +1,24 @@
+// 水平居中
+.horizontal-center() {
+    display: flex;
+    justify-content: center;
+}
+// 垂直居中
+.vertical-center() {
+    display: flex;
+    align-items: center;
+}
+// 水平垂直居中
+.h-v-center() {
+    .horizontal-center();
+    .vertical-center();
+}
+// 内部元素自动排列，可设置大小
+.auto-center(@width: auto, @height: auto) {
+    justify-content: space-around;
+    align-items: center;
+    >* {
+        width: @width;
+        height: @height;
+    }
+}
