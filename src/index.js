@@ -7,7 +7,7 @@ require('./index.less');
 !(function () {
 
   rem.init();
-  render.init();
+  // render.init();
   // redirect.init();
 
 })();

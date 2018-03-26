@@ -1,22 +1,39 @@
 @import './view/reset.less';
 @import './view/mixin.less';
-@import './view/flex.less';
 
-h1 {
-  color: red;
-}
-.main {
-  color: pink;
-}
-.step1 {
-  color: red;
-}
-.step2 {
-  color: green;
-}
-.step3 {
-  color: yellow;
-}
-.step4 {
-  color: grey;
+#main {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 2rem;
+    margin: 0.1rem;
+    text-align: center;
+    .avater {
+      position: relative;
+      width: 2rem;
+      height: 2rem;
+      margin-bottom: 0.1rem;
+      overflow: hidden;
+      border: 3px solid red;
+      border-radius: 100%;
+      .image {
+        .absolute-class();
+        background: yellow;
+      }
+      .mask {
+        .absolute-class();
+        background: black;
+        opacity: 0.5;
+      }
+      .title {
+        .absolute-class(100%, 0.5rem,initial,initial,initial,0);
+        color: #fff;
+      }
+    }
+  }
 }

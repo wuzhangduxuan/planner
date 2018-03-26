@@ -10494,7 +10494,7 @@ __webpack_require__(12);
 !function () {
 
   rem.init();
-  render.init();
+  // render.init();
   // redirect.init();
 }();
 
