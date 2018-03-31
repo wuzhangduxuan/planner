@@ -48,7 +48,7 @@ img {
   border: none;
   display: block;
 }
-#main {
+.container {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -56,6 +56,8 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
+}
+#main {
   background: #54a386 url(/img/bg_img.png) no-repeat;
   background-position: 50% 97%;
   background-size: 95%;
@@ -146,4 +148,70 @@ img {
   font-size: 2rem;
   color: #fff;
   font-family: serif;
+}
+#step1 p {
+  margin: 0.3rem 0.3rem 0.1rem;
+}
+#step1 h3 {
+  margin: 0.2rem 0.3rem;
+  font-size: 0.5rem;
+}
+#step1 .slide {
+  margin: 0.3rem 0;
+  height: 8rem;
+  width: 100%;
+  border: 1px solid red;
+  box-sizing: border-box;
+}
+#step1 .slide .img {
+  width: 100%;
+  height: 100%;
+  background: url(/img/final_tree.png) no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+#step1 .btns {
+  display: flex;
+  justify-content: center;
+  margin: 0.1rem auto;
+}
+#step1 .btns .btn {
+  width: 0.1rem;
+  height: 0.1rem;
+  margin: 0 0.05rem;
+  background: red;
+  border-radius: 100%;
+}
+#step1 .btn-group {
+  margin: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+#step1 .btn-group .buy {
+  height: 0.5rem;
+  font-size: 0.5rem;
+  color: #fff;
+  line-height: 0.5rem;
+  padding: 0.1rem 0.1rem 0.1rem 0.8rem;
+  background: red url(/img/my_money.png) no-repeat;
+  background-position: 15% 0;
+  background-size: auto 90%;
+  border-radius: 0.2rem;
+}
+#step1 .btn-group .use {
+  display: flex;
+}
+#step1 .btn-group .use .btn {
+  height: 0.5rem;
+  font-size: 0.4rem;
+  color: #fff;
+  line-height: 0.5rem;
+  padding: 0.1rem;
+  background: red;
+  background-position: 15%;
+  background-size: auto 80%;
+  border-radius: 0.2rem;
+}
+#step1 .btn-group .use .unlock {
+  margin-right: 0.1rem;
 }

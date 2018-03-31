@@ -10445,7 +10445,7 @@ var $ = __webpack_require__(0);
 var artT = __webpack_require__(5);
 
 var _opt = {
-  menu: '.menu',
+  menu: '[data-route]',
   page: '#app'
 };
 var $menu = $(_opt.menu);
@@ -10474,12 +10474,13 @@ var render = {
       success: function success(data) {
         data = data;
         renderHtml(path, data);
+        $menu = $(_opt.menu);
+        $menu.on('click', function () {
+          var pathname = $menu.data('route');
+          // console.log(e.target.pathname);
+          renderHtml(pathname, data);
+        });
       }
-    });
-    $menu.on('click', function (e) {
-      e.preventDefault();
-      // console.log(e.target.pathname);
-      renderHtml(e.target.pathname, data);
     });
   }
 };
@@ -10501,7 +10502,7 @@ __webpack_require__(12);
 !function () {
 
   rem.init();
-  // render.init();
+  render.init();
   // redirect.init();
 }();
 
@@ -10619,7 +10620,7 @@ module.exports = function (obj) {
 obj || (obj = {});
 var __t, __p = '';
 with (obj) {
-__p += '\r\n<div id="main" class="container">\r\n  <div class="items">\r\n  {{each data.items as item}}\r\n    <div class="item">\r\n      <div class="avater">\r\n        <div class="image"></div>\r\n        <div class="mask" data-complete="0"></div>\r\n        <div class="title">{{item.title}}</div>\r\n      </div>\r\n      <p>{{item.desc}}</p>\r\n    </div>\r\n  {{/each}}\r\n    <div id="add" class="item">\r\n      <div class="avater">\r\n        +\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>';
+__p += '\r\n<div id="main" class="container">\r\n  <div class="items">\r\n  {{each data.items as item}}\r\n    <div class="item">\r\n      <div class="avater">\r\n        <div class="image"></div>\r\n        <div class="mask" data-complete="0"></div>\r\n        <div class="title">{{item.title}}</div>\r\n      </div>\r\n      <p>{{item.desc}}</p>\r\n    </div>\r\n  {{/each}}\r\n    <div id="add" class="item" data-route="/step1">\r\n      <div class="avater">\r\n        +\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>';
 
 }
 return __p
@@ -10633,7 +10634,7 @@ module.exports = function (obj) {
 obj || (obj = {});
 var __t, __p = '';
 with (obj) {
-__p += '<h1 class="step1">{{data.title}}</h1>';
+__p += '\r\n<div id="step1" class="container">\r\n  <p>请选择树种</p>\r\n  <h3>大叶树</h3>\r\n  <div class="slide">\r\n    <div class="img"></div>\r\n  </div>\r\n  <div class="btns">\r\n    <div class="btn"></div>\r\n    <div class="btn"></div>\r\n    <div class="btn"></div>\r\n    <div class="btn"></div>\r\n    <div class="btn"></div>\r\n  </div>\r\n  <p>大叶树，整体叶子巨大，保持充足的水分</p>\r\n  <div class="btn-group">\r\n    <div class="buy">600</div>\r\n    <div class="use">\r\n      <div class="unlock btn">解锁</div>\r\n      <div class="choose btn" data-route="/step2">选择</div>\r\n    </div>\r\n  </div>\r\n</div>';
 
 }
 return __p

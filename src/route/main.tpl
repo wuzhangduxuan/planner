@@ -11,7 +11,7 @@
       <p>{{item.desc}}</p>
     </div>
   {{/each}}
-    <div id="add" class="item">
+    <div id="add" class="item" data-route="/step1">
       <div class="avater">
         +
       </div>

@@ -2,7 +2,7 @@ const $ = require('jquery');
 const artT = require('art-template/dist/template.js');
 
 const _opt = {
-  menu: '.menu',
+  menu: '[data-route]',
   page: '#app'
 }
 var $menu = $(_opt.menu);
@@ -31,13 +31,14 @@ const render = {
       success: (data) => {
         data = data;
         renderHtml(path, data);
+        $menu = $(_opt.menu);
+        $menu.on('click', () => {
+          var pathname = $menu.data('route');
+          // console.log(e.target.pathname);
+          renderHtml(pathname, data);
+        });
       }
-    });
-    $menu.on('click', (e) => {
-      e.preventDefault();
-      // console.log(e.target.pathname);
-      renderHtml(e.target.pathname, data);
-    });
+    });  
   }
 }
 module.exports = render;
