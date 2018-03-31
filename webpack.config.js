@@ -2,7 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlExtract = require('html-webpack-plugin');
 
 const extractLess = new ExtractTextPlugin({
-    filename: 'app.css'
+    filename: '/css/app.css'
 });
 const htmlExtract = new HtmlExtract({
     filename: './index.html',
@@ -13,7 +13,7 @@ const _config = {
     entry: './src/index.js',
     output: {
         path: __dirname +'/dist',
-        filename: 'app.js'
+        filename: 'js/app.js'
     },
     module: {
         rules: [
@@ -44,6 +44,16 @@ const _config = {
                 test: /\.json$/,
                 use: {
                     loader: 'json-loader'
+                }
+            },
+            {
+                test: /\.(jpg|png|gif)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        limit: 8192,
+                        name: '/img/[name].[ext]'
+                    }
                 }
             }
         ]

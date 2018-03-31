@@ -49,10 +49,44 @@ img {
   display: block;
 }
 #main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #54a386 url(/img/bg_img.png) no-repeat;
+  background-position: 50% 97%;
+  background-size: 95%;
+}
+#main .items {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 0.5rem;
+  height: 75%;
+  padding: 0 0.5rem;
+  overflow: scroll;
+}
+#main .items::before {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1rem;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(to bottom, #54a386, transparent);
+  z-index: 1;
+}
+#main .items::after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1rem;
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(to top, #54a386, transparent);
+  z-index: 1;
 }
 #main .item {
   display: flex;
@@ -61,6 +95,7 @@ img {
   min-width: 2rem;
   margin: 0.1rem;
   text-align: center;
+  color: #fff;
 }
 #main .item .avater {
   position: relative;
@@ -68,7 +103,7 @@ img {
   height: 2rem;
   margin-bottom: 0.1rem;
   overflow: hidden;
-  border: 3px solid red;
+  border: 3px solid #28d0b6;
   border-radius: 100%;
 }
 #main .item .avater .image {
@@ -79,7 +114,9 @@ img {
   left: initial;
   right: initial;
   bottom: initial;
-  background: yellow;
+  background: url(/img/tree_1.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: 50%;
 }
 #main .item .avater .mask {
   position: absolute;
@@ -88,9 +125,9 @@ img {
   top: initial;
   left: initial;
   right: initial;
-  bottom: initial;
+  bottom: 0;
   background: black;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 #main .item .avater .title {
   position: absolute;
@@ -101,4 +138,12 @@ img {
   right: initial;
   bottom: 0;
   color: #fff;
+  font-size: 0.28rem;
+}
+#main #add .avater {
+  border: 5px dotted #28d0b6;
+  line-height: 2rem;
+  font-size: 2rem;
+  color: #fff;
+  font-family: serif;
 }
