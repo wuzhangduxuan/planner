@@ -10445,14 +10445,14 @@ var $ = __webpack_require__(0);
 var artT = __webpack_require__(5);
 
 var _opt = {
-  menu: '.menu'
+  menu: '.menu',
+  page: '#app'
 };
 var $menu = $(_opt.menu);
+var $page = $(_opt.page);
 
-var data = {
-  title: 'planner'
-};
 var path = '/main';
+var data = {};
 
 function renderHtml(path, data) {
   var tpl = __webpack_require__(6)("./route" + path + '.tpl')();
@@ -10463,12 +10463,19 @@ function renderHtml(path, data) {
   };
 
   var html = renderer(obj);
-  $('#app').html(html);
+  $page.html(html);
 }
 
 var render = {
   init: function init() {
-    renderHtml(path, data);
+    $.ajax({
+      url: '/main',
+      type: 'get',
+      success: function success(data) {
+        data = data;
+        renderHtml(path, data);
+      }
+    });
     $menu.on('click', function (e) {
       e.preventDefault();
       // console.log(e.target.pathname);
@@ -10612,7 +10619,7 @@ module.exports = function (obj) {
 obj || (obj = {});
 var __t, __p = '';
 with (obj) {
-__p += '<p class="main">{{data.title}}</p>';
+__p += '\r\n<div id="main" class="container">\r\n  <div class="items">\r\n  {{each data.items as item}}\r\n    <div class="item">\r\n      <div class="avater">\r\n        <div class="image"></div>\r\n        <div class="mask" data-complete="0"></div>\r\n        <div class="title">{{item.title}}</div>\r\n      </div>\r\n      <p>{{item.desc}}</p>\r\n    </div>\r\n  {{/each}}\r\n    <div id="add" class="item">\r\n      <div class="avater">\r\n        +\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>';
 
 }
 return __p

@@ -2,14 +2,14 @@ const $ = require('jquery');
 const artT = require('art-template/dist/template.js');
 
 const _opt = {
-  menu: '.menu'
+  menu: '.menu',
+  page: '#app'
 }
 var $menu = $(_opt.menu);
+var $page = $(_opt.page);
 
-var data = {
-  title: 'planner'
-}
 var path = '/main';
+var data={};
 
 function renderHtml(path, data) {
   const tpl = require('../route'+path+'.tpl')();
@@ -20,12 +20,19 @@ function renderHtml(path, data) {
   }
 
   var html = renderer(obj);
-  $('#app').html(html);
+  $page.html(html);
 }
 
 const render = {
   init: () => {
-    renderHtml(path, data);
+    $.ajax({
+      url: '/main',
+      type: 'get',
+      success: (data) => {
+        data = data;
+        renderHtml(path, data);
+      }
+    });
     $menu.on('click', (e) => {
       e.preventDefault();
       // console.log(e.target.pathname);
