@@ -1,18 +1,16 @@
 const $ = require('jquery');
 const artT = require('art-template/dist/template.js');
+const route = require('../controller/route');
 
 const _opt = {
-  menu: '[data-route]',
   page: '#app'
 }
-var $menu = $(_opt.menu);
 var $page = $(_opt.page);
 
-var path = '/main';
 var data={};
 
-function renderHtml(path, data) {
-  const tpl = require('../route'+path+'.tpl')();
+function renderHtml(data) {
+  const tpl = require('../route/main.tpl')();
   const renderer = artT.compile(tpl);
 
   const obj = {
@@ -30,15 +28,10 @@ const render = {
       type: 'get',
       success: (data) => {
         data = data;
-        renderHtml(path, data);
-        $menu = $(_opt.menu);
-        $menu.on('click', () => {
-          var pathname = $menu.data('route');
-          // console.log(e.target.pathname);
-          renderHtml(pathname, data);
-        });
+        renderHtml(data);
       }
-    });  
+    });
+    route.init();
   }
 }
 module.exports = render;

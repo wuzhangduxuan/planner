@@ -10443,19 +10443,17 @@ return jQuery;
 
 var $ = __webpack_require__(0);
 var artT = __webpack_require__(5);
+var route = __webpack_require__(25);
 
 var _opt = {
-  menu: '[data-route]',
   page: '#app'
 };
-var $menu = $(_opt.menu);
 var $page = $(_opt.page);
 
-var path = '/main';
 var data = {};
 
-function renderHtml(path, data) {
-  var tpl = __webpack_require__(6)("./route" + path + '.tpl')();
+function renderHtml(data) {
+  var tpl = __webpack_require__(7)();
   var renderer = artT.compile(tpl);
 
   var obj = {
@@ -10473,15 +10471,10 @@ var render = {
       type: 'get',
       success: function success(data) {
         data = data;
-        renderHtml(path, data);
-        $menu = $(_opt.menu);
-        $menu.on('click', function () {
-          var pathname = $menu.data('route');
-          // console.log(e.target.pathname);
-          renderHtml(pathname, data);
-        });
+        renderHtml(data);
       }
     });
+    route.init();
   }
 };
 module.exports = render;
@@ -10497,12 +10490,14 @@ var $ = __webpack_require__(0);
 var rem = __webpack_require__(3);
 var redirect = __webpack_require__(4);
 var render = __webpack_require__(1);
+var route = __webpack_require__(25);
 __webpack_require__(12);
 
 !function () {
 
   rem.init();
   render.init();
+  // route.init();
   // redirect.init();
 }();
 
@@ -10586,33 +10581,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/*!art-template - Template Engine | http://aui
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):"undefined"!=typeof exports?module.exports=d:this.template=d}();
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./route/main.tpl": 7,
-	"./route/step1.tpl": 8,
-	"./route/step2.tpl": 9,
-	"./route/step3.tpl": 10,
-	"./route/step4.tpl": 11
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 6;
-
-/***/ }),
+/* 6 */,
 /* 7 */
 /***/ (function(module, exports) {
 
@@ -10620,73 +10589,97 @@ module.exports = function (obj) {
 obj || (obj = {});
 var __t, __p = '';
 with (obj) {
-__p += '\r\n<div id="main" class="container">\r\n  <div class="items">\r\n  {{each data.items as item}}\r\n    <div class="item">\r\n      <div class="avater">\r\n        <div class="image"></div>\r\n        <div class="mask" data-complete="0"></div>\r\n        <div class="title">{{item.title}}</div>\r\n      </div>\r\n      <p>{{item.desc}}</p>\r\n    </div>\r\n  {{/each}}\r\n    <div id="add" class="item" data-route="/step1">\r\n      <div class="avater">\r\n        +\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>';
+__p += '\r\n<div id="main" class="container">\r\n  <div class="items">\r\n  {{each data.items as item}}\r\n    <div class="item" data-route="/step4">\r\n      <div class="avater">\r\n        <div class="image"></div>\r\n        <div class="mask" data-complete="0"></div>\r\n        <div class="title">{{item.title}}</div>\r\n      </div>\r\n      <p>{{item.desc}}</p>\r\n    </div>\r\n  {{/each}}\r\n    <div id="add" class="item" data-route="/step1">\r\n      <div class="avater">\r\n        +\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>';
 
 }
 return __p
 }
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = function (obj) {
-obj || (obj = {});
-var __t, __p = '';
-with (obj) {
-__p += '\r\n<div id="step1" class="container">\r\n  <p>请选择树种</p>\r\n  <h3>大叶树</h3>\r\n  <div class="slide">\r\n    <div class="img"></div>\r\n  </div>\r\n  <div class="btns">\r\n    <div class="btn"></div>\r\n    <div class="btn"></div>\r\n    <div class="btn"></div>\r\n    <div class="btn"></div>\r\n    <div class="btn"></div>\r\n  </div>\r\n  <p>大叶树，整体叶子巨大，保持充足的水分</p>\r\n  <div class="btn-group">\r\n    <div class="buy">600</div>\r\n    <div class="use">\r\n      <div class="unlock btn">解锁</div>\r\n      <div class="choose btn" data-route="/step2">选择</div>\r\n    </div>\r\n  </div>\r\n</div>';
-
-}
-return __p
-}
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-module.exports = function (obj) {
-obj || (obj = {});
-var __t, __p = '';
-with (obj) {
-__p += '<h1 class="step2">{{data.title}}</h1>';
-
-}
-return __p
-}
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-module.exports = function (obj) {
-obj || (obj = {});
-var __t, __p = '';
-with (obj) {
-__p += '<h1 class="step3">{{data.title}}</h1>';
-
-}
-return __p
-}
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = function (obj) {
-obj || (obj = {});
-var __t, __p = '';
-with (obj) {
-__p += '<h1 class="step4">{{data.title}}</h1>';
-
-}
-return __p
-}
-
-/***/ }),
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
 /* 12 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $ = __webpack_require__(0);
+var route = function () {
+  function slideIn($item) {
+    $item.css({
+      animation: 'slideIn 0.5s'
+    });
+  }
+
+  function init() {
+    $('body').on('click', '[data-route="/main"]', function () {
+      // $('#step1').hide();
+      // $('#step2').hide();
+      // $('#step3').hide();
+      // $('#step4').hide();
+      // $('#step5').hide();
+      // $('#final').hide();
+      location.reload();
+    });
+    $('body').on('click', '[data-route="/step1"]', function () {
+      $('#step1').show();
+      slideIn($('#step1'));
+    });
+    $('body').on('click', '[data-route="/step2"]', function () {
+      $('#step2').show();
+      slideIn($('#step2'));
+    });
+    $('body').on('click', '[data-route="/step3"]', function () {
+      $('#step3').show();
+      slideIn($('#step3'));
+    });
+    $('body').on('click', '[data-route="/step4"]', function () {
+      $('#step4').show();
+      slideIn($('#step4'));
+    });
+    $('body').on('click', '[data-route="/step5"]', function () {
+      $('#step5').show();
+      slideIn($('#step4'));
+    });
+    $('body').on('click', '.back', function (e) {
+      $(e.target).parent().parent().css({
+        animation: 'slideOut 0.5s'
+      });
+      setTimeout(function () {
+        $(e.target).parent().parent().hide();
+        $(e.target).parent().parent().css({
+          animation: ''
+        });
+      }, 500);
+    });
+  }
+  return {
+    init: init
+  };
+}();
+
+module.exports = route;
 
 /***/ })
 /******/ ]);
