@@ -1,0 +1,382 @@
+* {
+  font-size: 0.24rem;
+}
+article,
+aside,
+figure,
+figcaption,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+body,
+div,
+dt,
+dl,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+input,
+form,
+a,
+p,
+textarea {
+  margin: 0;
+  padding: 0;
+  font-family: '\5FAE\8F6F\96C5\9ED1', consolas;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  display: block;
+}
+img {
+  border: none;
+  display: block;
+}
+@keyframes slideIn {
+  0% {
+    transform: translate(100%);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes slideOut {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(100%);
+  }
+}
+body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #d6f1e8;
+}
+.container .topbar {
+  width: 100%;
+  height: 1rem;
+  margin-bottom: 0.2rem;
+  background: #53a487;
+  line-height: 1rem;
+}
+.container .topbar span {
+  color: #fff;
+  font-size: 0.3rem;
+}
+.container .topbar .back {
+  height: 100%;
+  display: inline-block;
+  width: 0.6rem;
+  text-align: center;
+}
+#app {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#main {
+  background: #54a386 url(/img/bg_img.png) no-repeat;
+  background-position: 50% 97%;
+  background-size: 95%;
+  z-index: 0;
+}
+#main .items {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 75%;
+  padding: 0 0.5rem;
+  overflow: scroll;
+}
+#main .items::before {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1rem;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(to bottom, #54a386, transparent);
+  z-index: 1;
+}
+#main .items::after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1rem;
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(to top, #54a386, transparent);
+  z-index: 1;
+}
+#main .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 2rem;
+  margin: 0.1rem;
+  text-align: center;
+  color: #fff;
+}
+#main .item .avater {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.1rem;
+  overflow: hidden;
+  border: 3px solid #28d0b6;
+  border-radius: 100%;
+}
+#main .item .avater .image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: initial;
+  left: initial;
+  right: initial;
+  bottom: initial;
+  background: url(/img/tree_1.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: 50%;
+}
+#main .item .avater .mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: initial;
+  left: initial;
+  right: initial;
+  bottom: 0;
+  background: black;
+  opacity: 0.3;
+}
+#main .item .avater .title {
+  position: absolute;
+  width: 100%;
+  height: 0.5rem;
+  top: initial;
+  left: initial;
+  right: initial;
+  bottom: 0;
+  color: #fff;
+  font-size: 0.28rem;
+}
+#main #add .avater {
+  border: 3px dotted #28d0b6;
+  line-height: 2rem;
+  font-size: 2rem;
+  color: #fff;
+  font-family: serif;
+}
+#step1 {
+  display: none;
+  z-index: 1;
+}
+#step1 p {
+  margin: 0.3rem 0.3rem 0.1rem;
+  color: #3b6b5a;
+}
+#step1 h3 {
+  margin: 0.2rem 0.3rem;
+  font-size: 0.5rem;
+  color: #3b6b5a;
+}
+#step1 .slide {
+  margin: 0.3rem 0;
+  height: 8rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+#step1 .slide .img {
+  width: 100%;
+  height: 100%;
+  background: url(/img/final_tree.png) no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
+#step1 .btns {
+  display: none;
+  justify-content: center;
+  margin: 0.1rem auto;
+}
+#step1 .btns .btn {
+  width: 0.1rem;
+  height: 0.1rem;
+  margin: 0 0.05rem;
+  background: #28dd9c;
+  border-radius: 100%;
+}
+#step1 .btn-group {
+  margin: 0.3rem;
+  display: flex;
+  justify-content: flex-end;
+}
+#step1 .btn-group .buy {
+  display: none;
+  height: 0.5rem;
+  font-size: 0.5rem;
+  color: #fff;
+  line-height: 0.5rem;
+  padding: 0.1rem 0.1rem 0.1rem 0.8rem;
+  background: red url(/img/my_money.png) no-repeat;
+  background-position: 15% 0;
+  background-size: auto 90%;
+  border-radius: 0.2rem;
+}
+#step1 .btn-group .use {
+  display: flex;
+}
+#step1 .btn-group .use .btn {
+  height: 0.5rem;
+  font-size: 0.4rem;
+  color: #fff;
+  line-height: 0.5rem;
+  padding: 0.1rem;
+  background: #3b6b5a;
+  background-position: 15%;
+  background-size: auto 80%;
+  border-radius: 0.2rem;
+}
+#step1 .btn-group .use .unlock {
+  display: none;
+  margin-right: 0.1rem;
+}
+#step2 {
+  display: none;
+  z-index: 1;
+}
+#step2 p {
+  margin: 0.3rem 0.3rem 0.1rem;
+  color: #3b6b5a;
+}
+#step2 input {
+  width: 100%;
+  border: none;
+  text-indent: 0.3rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  font-size: 0.35rem;
+}
+#step2 input:focus {
+  outline: none;
+}
+#step2 .full-btn {
+  height: 0.6rem;
+  line-height: 0.6rem;
+  font-size: 0.35rem;
+  margin: 0.3rem 0.3rem 0.1rem;
+  background: #53a487;
+  text-align: center;
+  border-radius: 0.3rem;
+  color: #fff;
+}
+#step3 {
+  display: none;
+  z-index: 1;
+}
+#step3 p {
+  margin: 0.3rem 0.3rem 0.1rem;
+  color: #3b6b5a;
+}
+#step3 textarea {
+  width: 100%;
+  border: none;
+}
+#step3 textarea:focus {
+  outline: none;
+}
+#step3 .full-btn {
+  height: 0.6rem;
+  line-height: 0.6rem;
+  font-size: 0.35rem;
+  margin: 0.3rem 0.3rem 0.1rem;
+  background: #53a487;
+  text-align: center;
+  border-radius: 0.3rem;
+  color: #fff;
+}
+#step4 {
+  display: none;
+  z-index: 1;
+}
+#step4 p {
+  margin: 0.3rem 0.3rem 0.1rem;
+  color: #3b6b5a;
+}
+#step4 textarea {
+  width: 100%;
+  border: none;
+}
+#step4 textarea:focus {
+  outline: none;
+}
+#step4 .full-btn {
+  height: 0.6rem;
+  line-height: 0.6rem;
+  font-size: 0.35rem;
+  margin: 0.3rem 0.3rem 0.1rem;
+  background: #d59323;
+  text-align: center;
+  border-radius: 0.3rem;
+  color: #fff;
+}
+#step5 {
+  display: none;
+  z-index: 1;
+}
+#step5 p {
+  margin: 0.3rem 0.3rem 0.1rem;
+  color: #3b6b5a;
+}
+#step5 textarea {
+  width: 100%;
+  border: none;
+}
+#step5 textarea:focus {
+  outline: none;
+}
+#step5 .full-btn {
+  height: 0.6rem;
+  line-height: 0.6rem;
+  font-size: 0.35rem;
+  margin: 0.3rem 0.3rem 0.1rem;
+  background: #d59323;
+  text-align: center;
+  border-radius: 0.3rem;
+  color: #fff;
+}
