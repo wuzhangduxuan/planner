@@ -27,7 +27,7 @@ params:
 url:/task/new
 Content-Type:application/json
 param:
-//参数说明：第一个子阶段的开始时间+消耗时间需要小于下一个阶段
+//参数说明：第一个子阶段的开始时间+消耗时间需要小于下一个阶段,时间单位毫秒
 {
 	"taskName": "学习java",
 	"startTime": "2018-02-23 10:00:00",
@@ -65,5 +65,85 @@ param:
 返回数据:
 {"code":0,"message":"创建用户成功"}
 {"code":-2,"message":"账户已经存在,请重新填"}
+```
+
+规划表查询
+```
+url:/task/select
+params:
+返回数据:
+{
+	"code": -2,
+	"message": "暂无规划表"
+}
+{
+	"code": 0,
+	"message": [{
+		"taskId": 16,
+		"perId": 3,
+		"taskName": "学习java",
+		"stageLevel": null,
+		"startTime": "2018-02-23 10:00:00",
+		"timeConsume": 7200000,
+		"parentId": null,
+		"state": 1
+	}]
+}
+```
+
+规划详情查询
+```
+state说明:
+
+    INIT(-2),   //初始状态
+    RUNNING(0), //运行状态
+    TIMEOUT(1), //超时状态，用户在时间区间内未完成任务
+    END(2); //结束状态,用户主动完成任务
+
+url:/task/${taskId}
+返回数据:
+{
+	"code": -2,
+	"message": "暂无规划表"
+}
+
+{
+	"code": 0,
+	"message": {
+		"taskId": null,
+		"perId": 16,
+		"taskName": "学习java",
+		"stageLevel": null,
+		"startTime": "2018-02-23 10:00:00",
+		"timeConsume": 7200000,
+		"parentId": null,
+		"state": 1,
+		"taskList": [{
+			"taskId": 17,
+			"perId": 3,
+			"taskName": "java基础",
+			"stageLevel": 1,
+			"startTime": "2018-02-23 11:00:00",
+			"timeConsume": 36000,
+			"parentId": 16,
+			"state": -2
+		}]
+	}
+}
+```
+
+结束任务
+```
+url:/task/end/${taskId}
+返回数据;
+{
+	"code": 0,
+	"message": "更新任务状态成功"
+}
+
+{
+	"code": -2,
+	"message": "暂不存在该任务"
+}
 ```
 
