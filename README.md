@@ -2,8 +2,6 @@
 > 没时间了，赶紧写。
 
 
-数据格式:
-
 登录
 ```
 url:/login
@@ -145,5 +143,54 @@ url:/task/end/${taskId}
 	"code": -2,
 	"message": "暂不存在该任务"
 }
+```
+个人信息
+```
+url:/info
+返回数据;
+{
+	"code": 0,
+	"message": {
+		"perId": 3,
+		"perUser": "zhang.wu",
+		"perPass": "0204376745",
+		"perName": "hello",//昵称
+		"perComment": "hello"//个人签名
+	}
+}
+
+```
+
+登出
+```
+url:/logout
+返回数据;
+{
+	"code": 0,
+	"message": "登出成功"
+}
+
+{"code":-3,"message":"暂未登录，无权限访问接口"}
+
+```
+任务进度条
+```
+url:/task/progress/{taskId}
+返回数据;
+{
+	"code": 0,
+	"message": {
+		"state": 2//完成  -2//初始化  
+	}
+}
+
+{
+	"code": 0,
+	"message": {
+		"state": 0, //运行中
+		"progress": "97.08" //进度
+	}
+}
+
 ```
 
